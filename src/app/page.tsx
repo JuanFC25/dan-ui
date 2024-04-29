@@ -79,7 +79,9 @@ export default function Home() {
             </form>
           </CardBody>
           <CardFooter justify="center">
-            <Button onClick={() => router.replace("/productos")}>Login</Button>
+            <Button onClick={() => router.replace("/admin/productos")}>
+              Login
+            </Button>
           </CardFooter>
         </Card>
       </Flex>
