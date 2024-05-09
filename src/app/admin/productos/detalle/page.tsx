@@ -31,10 +31,11 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, use } from "react";
 import * as productoService from "../../../services/producto.service";
-import { EditIcon } from "@chakra-ui/icons";
-import { OrdenProvisionDetalle } from "@/app/interfaces/ordenProvisionDetalle";
 
-export default function DetalleProducto() {
+import { OrdenProvisionDetalle } from "@/app/interfaces/ordenProvisionDetalle";
+import withAuth from "@/app/hocs/authenticated";
+
+function DetalleProducto() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -252,3 +253,4 @@ export default function DetalleProducto() {
     </ChakraProvider>
   );
 }
+export default withAuth(["ADMIN", "EMPLEADO"], DetalleProducto);

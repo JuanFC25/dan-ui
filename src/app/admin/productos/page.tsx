@@ -21,8 +21,9 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import * as productoService from "../../services/producto.service";
+import withAuth from "@/app/hocs/authenticated";
 
-export default function Home() {
+function Home() {
   const router = useRouter();
   const currentPage = usePathname();
 
@@ -64,9 +65,6 @@ export default function Home() {
           align="center"
           bg="linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(222,221,221,1) 35%);"
         >
-          <Button ml="15px" isDisabled={true}>
-            Eliminar Producto
-          </Button>
           <Button ml="15px" onClick={() => router.push("/admin/productos/add")}>
             Agregar Producto
           </Button>
@@ -132,3 +130,4 @@ export default function Home() {
     </ChakraProvider>
   );
 }
+export default withAuth(["ADMIN", "EMPLEADO"], Home);

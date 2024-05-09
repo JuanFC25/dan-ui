@@ -5,3 +5,9 @@ export interface OrdenProvisionDetalle {
   productoId: number;
   precio: number;
 }
+
+export interface ProductoOrdenProvision {
+  cantidad: number;
+  id: number;
+  precio: number;
+}

@@ -31,8 +31,9 @@ import * as productoService from "../../../services/producto.service";
 import { Categoria } from "@/app/interfaces/categoria";
 import { useRouter } from "next/navigation";
 import { Producto } from "@/app/interfaces/producto";
+import withAuth from "@/app/hocs/authenticated";
 
-export default function addProducto() {
+function AddProducto() {
   const router = useRouter();
 
   const [proveedores, setproveedores] = useState<Proveedor[]>([]);
@@ -197,3 +198,5 @@ export default function addProducto() {
     </ChakraProvider>
   );
 }
+
+export default withAuth(["ADMIN", "EMPLEADO"], AddProducto);

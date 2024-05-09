@@ -2,6 +2,7 @@
 
 import { Button, Card, ChakraProvider, Flex } from "@chakra-ui/react";
 import { usePathname, useRouter } from "next/navigation";
+import * as authService from "../services/auth.service";
 
 export default function AdminLayout({
   children,
@@ -34,6 +35,17 @@ export default function AdminLayout({
     }
   }
 
+  function goPedidos() {
+    if (currentPage !== "/admin/pedidos") {
+      router.push("/admin/pedidos");
+    }
+  }
+
+  function logout() {
+    authService.removeToken();
+    router.replace("/");
+  }
+
   return (
     <>
       <ChakraProvider>
@@ -49,6 +61,12 @@ export default function AdminLayout({
           </Button>
           <Button m="5px" onClick={goOrdenes}>
             Ordenes de Provision
+          </Button>
+          <Button m="5px" onClick={goPedidos}>
+            Pedidos
+          </Button>
+          <Button m="5px" onClick={logout}>
+            LogOut
           </Button>
         </Flex>
       </ChakraProvider>

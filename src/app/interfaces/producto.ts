@@ -16,3 +16,10 @@ export interface Producto {
   proveedor?: Proveedor;
   categoria?: Categoria;
 }
+
+export interface ProductoCarrito {
+  producto: number;
+  cantidad: number;
+  descuento: number;
+  precio?: number;
+}

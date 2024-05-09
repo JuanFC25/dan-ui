@@ -19,8 +19,9 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import withAuth from "@/app/hocs/authenticated";
 
-export default function Home() {
+function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -99,3 +100,5 @@ export default function Home() {
     </>
   );
 }
+
+export default withAuth(["ADMIN", "EMPLEADO"], Home);

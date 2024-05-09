@@ -19,6 +19,10 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import * as authService from "./services/auth.service";
+import { JtwStructure } from "./interfaces/jwt";
+import jwt from "jsonwebtoken";
+import ErrorModal from "./components/errorModal";
 
 export default function Home() {
   const router = useRouter();
@@ -27,6 +31,7 @@ export default function Home() {
   const [password, setPassword] = useState("");
 
   const [mostrarPass, setMostrarPass] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   function handleSumbit(event: any) {
     // const toast = useToast();
@@ -36,8 +41,30 @@ export default function Home() {
     // });
   }
 
+  async function doLogin() {
+    try {
+      const token = await authService.login(user, password);
+
+      const tokenDecoded = jwt.decode(token) as unknown as JtwStructure;
+
+      if (tokenDecoded.tipo.tipo === "CLIENTE") {
+        router.replace("/cliente/productos");
+      } else {
+        router.replace("/admin/productos");
+      }
+    } catch (err) {
+      setShowError(true);
+    }
+  }
+
   return (
     <ChakraProvider>
+      <ErrorModal
+        isOpen={showError}
+        onClose={() => setShowError(false)}
+        title={"Error"}
+        message={"Credenciales Incorrectas"}
+      ></ErrorModal>
       <Flex height="100vh" justify="center" alignItems="center" bg="#dcdcdc">
         <Card width="30%">
           <Flex justify="center">
@@ -79,7 +106,15 @@ export default function Home() {
             </form>
           </CardBody>
           <CardFooter justify="center">
-            <Button onClick={() => router.replace("/admin/productos")}>
+            <Button onClick={() => router.push("/register")}>
+              Registrarse
+            </Button>
+
+            <Button
+              ml="15px"
+              onClick={doLogin}
+              isDisabled={user === "" || password === ""}
+            >
               Login
             </Button>
           </CardFooter>

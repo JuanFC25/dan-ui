@@ -1,15 +1,16 @@
 import { Producto } from "../interfaces/producto";
 import * as Api from "../services";
+import fetchWrapper from "../utils/fetchWrapper";
 
 export async function getProductos(): Promise<Producto[]> {
-  const resp = await fetch(Api.API_GET_PRODUCTOS);
-  return resp.json();
+  const resp = await fetchWrapper(Api.API_GET_PRODUCTOS, {});
+  return await resp.json();
 }
 
 export async function getProductoById(id: string): Promise<Producto> {
-  const resp = await fetch(`${Api.API_GET_PRODUCTOS}/${id}`);
+  const resp = await fetchWrapper(`${Api.API_GET_PRODUCTOS}/${id}`, {});
 
-  return resp.json();
+  return await resp.json();
 }
 
 export async function addProducto(prod: Producto) {
@@ -21,14 +22,14 @@ export async function addProducto(prod: Producto) {
   formData.append("stock", prod.stockActual.toString());
   formData.append("precioVenta", prod.precioVenta.toString());
 
-  const resp = await fetch(Api.API_ADD_PRODUCTO, {
+  const resp = await fetchWrapper(Api.API_ADD_PRODUCTO, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: formData.toString(),
   });
-  return resp;
+  return await resp;
 }
 
 export async function updateProducto(prod: Producto) {
@@ -42,19 +43,29 @@ export async function updateProducto(prod: Producto) {
   formData.append("stock", prod.stockActual.toString());
   formData.append("precioVenta", prod.precioVenta.toString());
 
-  const resp = await fetch(Api.API_ADD_PRODUCTO, {
+  const resp = await fetchWrapper(Api.API_ADD_PRODUCTO, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: formData.toString(),
   });
-  return resp;
+  return await resp;
 }
 
 export async function deleteProducto(idProd: string) {
-  const resp = await fetch(`${Api.API_GET_PRODUCTOS}/${idProd}`, {
+  const resp = await fetchWrapper(`${Api.API_GET_PRODUCTOS}/${idProd}`, {
     method: "DELETE",
   });
-  return resp;
+  return await resp;
+}
+
+export async function getProductosByProveedor(
+  idProv: string
+): Promise<Producto[]> {
+  const resp = await fetchWrapper(
+    `${Api.API_GET_PRODUCTOS}/?idProveedor=${idProv}`,
+    {}
+  );
+  return await resp.json();
 }

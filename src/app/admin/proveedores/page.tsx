@@ -21,8 +21,9 @@ import * as proveedorService from "../../services/proveedor.service";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
+import withAuth from "@/app/hocs/authenticated";
 
-export default function Home() {
+function Home() {
   const router = useRouter();
 
   const [proveedores, setproveedores] = useState<Proveedor[]>([]);
@@ -126,3 +127,5 @@ export default function Home() {
     </ChakraProvider>
   );
 }
+
+export default withAuth(["ADMIN", "EMPLEADO"], Home);

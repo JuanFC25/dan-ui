@@ -20,8 +20,9 @@ import * as categoriaService from "../../services/categoria.service";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Categoria } from "@/app/interfaces/categoria";
+import withAuth from "@/app/hocs/authenticated";
 
-export default function Home() {
+function Home() {
   const router = useRouter();
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -121,3 +122,5 @@ export default function Home() {
     </ChakraProvider>
   );
 }
+
+export default withAuth(["ADMIN", "EMPLEADO"], Home);
