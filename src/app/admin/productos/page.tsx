@@ -58,7 +58,13 @@ function Home() {
 
   return (
     <ChakraProvider>
-      <Flex height="95vh" bg="#f7f7f7" direction="column">
+      <Flex
+        height="95vh"
+        bg={
+          "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+        }
+        direction="column"
+      >
         <Flex
           height="10vh"
           width="100%"
@@ -87,7 +93,7 @@ function Home() {
         </Flex>
 
         <Flex width="100%" justify="center" m="15px">
-          <TableContainer background="#dedddd" rounded={"15px"} width="80%">
+          <TableContainer background="white" rounded={"15px"} width="80%">
             <Table variant="simple">
               <Thead>
                 <Tr>

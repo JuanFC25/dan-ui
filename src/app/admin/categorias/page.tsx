@@ -59,13 +59,12 @@ function Home() {
 
   return (
     <ChakraProvider>
-      <Flex height="95vh" bg="#f7f7f7" direction="column">
-        <Flex
-          height="10vh"
-          width="100%"
-          align="center"
-          bg="linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(222,221,221,1) 35%);"
-        >
+      <Flex
+        height="95vh"
+        bg="linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(222,221,221,1) 35%);"
+        direction="column"
+      >
+        <Flex height="10vh" width="100%" align="center">
           <Button ml="15px">Agregar Categoria</Button>
           <InputGroup ml="15px" mr="15px">
             <Input
@@ -86,7 +85,7 @@ function Home() {
         </Flex>
 
         <Flex width="100%" justify="center" m="15px">
-          <TableContainer background="#dedddd" rounded={"15px"} width="70%">
+          <TableContainer background="white" rounded={"15px"} width="70%">
             <Table variant="simple">
               <Thead>
                 <Tr>

@@ -89,7 +89,7 @@ function Home() {
         </Flex>
 
         <Flex width="100%" justify="center" m="15px">
-          <TableContainer background="#dedddd" rounded={"15px"} width="70%">
+          <TableContainer background="white" rounded={"15px"} width="70%">
             <Table variant="simple">
               <Thead>
                 <Tr>

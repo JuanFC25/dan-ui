@@ -70,15 +70,22 @@ function DetalleOrden() {
   const [precio, setPrecio] = useState("");
 
   const handleConfirmOrden = async () => {
-    openModalLoading();
-    if (!orden) {
-      return;
+    try {
+      openModalLoading();
+      if (!orden) {
+        return;
+      }
+      const resp = await ordenProvisionService.confirmarOrden(orden.id);
+      console.log("respuesta", resp);
+      setIsConfirmConfirmationOpen(false);
+      router.replace("/admin/ordenes-provision");
+      closeModalLoading();
+    } catch (err) {
+      console.log(err);
+      closeModalLoading();
     }
-    await ordenProvisionService.confirmarOrden(orden.id);
-    setIsConfirmConfirmationOpen(false);
-    router.replace("/admin/ordenes-provision");
-    closeModalLoading();
   };
+
   const handleConfirmCancelOrden = async () => {
     openModalLoading();
     if (!orden) {
@@ -210,7 +217,14 @@ function DetalleOrden() {
         message="¿Esta seguro que desea confirmar la orden? una vez realizado ne sera posible revertir esta acción."
       />
 
-      <Flex height="95vh" bg="#f7f7f7" direction="column" align="center">
+      <Flex
+        height="95vh"
+        bg={
+          "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+        }
+        direction="column"
+        align="center"
+      >
         {orden?.fechaRecepcion.toString() !== "1969-02-02T00:00:00.000Z" ||
         orden.esCancelada ? null : (
           <>
@@ -279,7 +293,7 @@ function DetalleOrden() {
 
         <TableContainer
           mt="15px"
-          background="#dedddd"
+          background="white"
           rounded={"15px"}
           width="50%"
         >

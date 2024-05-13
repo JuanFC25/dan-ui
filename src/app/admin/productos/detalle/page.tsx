@@ -120,7 +120,14 @@ function DetalleProducto() {
 
   return (
     <ChakraProvider>
-      <Flex height="95vh" bg="#f7f7f7" direction="column" align="center">
+      <Flex
+        height="95vh"
+        bg={
+          "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+        }
+        direction="column"
+        align="center"
+      >
         <Card mt="15px" w="70%">
           <CardHeader textAlign={"center"}>
             <Heading size="md">Modificar Producto</Heading>
@@ -226,7 +233,7 @@ function DetalleProducto() {
 
         <TableContainer
           mt="15px"
-          background="#dedddd"
+          background="white"
           rounded={"15px"}
           width="30%"
         >

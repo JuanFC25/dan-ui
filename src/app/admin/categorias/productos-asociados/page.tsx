@@ -53,11 +53,13 @@ function Home() {
         <Flex
           width="100%"
           justify="center"
-          m="15px"
           direction="column"
           alignItems={"center"}
+          bg={
+            "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+          }
         >
-          <Flex w={"70%"} align={"start"} direction={"column"}>
+          <Flex w={"70%"} align={"start"} direction={"column"} mt={"15px"}>
             <Button
               leftIcon={<ArrowBackIcon />}
               width={"fit-content"}
@@ -66,7 +68,7 @@ function Home() {
             >
               Volver
             </Button>
-            <TableContainer background="#dedddd" rounded={"15px"} width="100%">
+            <TableContainer background="white" rounded={"15px"} width="100%">
               <Table variant="simple">
                 <Thead>
                   <Tr>

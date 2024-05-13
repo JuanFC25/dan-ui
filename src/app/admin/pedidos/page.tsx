@@ -181,7 +181,7 @@ function ListaPedidos() {
         direction={"column"}
       >
         <Flex justify={"center"} mt="35px" w="100%">
-          <TableContainer w="80%">
+          <TableContainer w="90%">
             <Table variant="simple" bg={"white"} borderRadius={"15px"}>
               <Thead>
                 <Tr>

@@ -81,10 +81,12 @@ function AgregarOrden() {
         detalleOrden
       );
 
-      console.log(resp);
+      console.log("respuesta: ", resp);
+      console.log(resp.toString());
       if (
         (resp.message =
-          "Uno o mas productos no pertenecen al proveedor suministrado")
+          "Uno o mas productos no pertenecen al proveedor suministrado" &&
+          !resp.id)
       ) {
         throw new Error(resp.message);
       }
@@ -181,7 +183,14 @@ function AgregarOrden() {
         message="¿Esta seguro que desea crear la orden de provisión?"
       />
 
-      <Flex height="95vh" bg="#f7f7f7" direction="column" align="center">
+      <Flex
+        height="95vh"
+        bg={
+          "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+        }
+        direction="column"
+        align="center"
+      >
         <Card mt="15px" w="70%">
           <CardHeader textAlign={"center"}>
             <Heading size="md">Crear Orden</Heading>
@@ -249,7 +258,7 @@ function AgregarOrden() {
 
         <TableContainer
           mt="15px"
-          background="#dedddd"
+          background="white"
           rounded={"15px"}
           width="50%"
         >

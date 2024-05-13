@@ -58,6 +58,7 @@ export async function confirmarOrden(idOrden: number) {
       method: "POST",
     }
   );
+  console.log("resp service", resp);
   return await resp.json();
 }
 
