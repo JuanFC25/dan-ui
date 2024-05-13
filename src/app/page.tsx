@@ -16,6 +16,7 @@ import {
   InputGroup,
   InputRightAddon,
   useToast,
+  Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -65,11 +66,23 @@ export default function Home() {
         title={"Error"}
         message={"Credenciales Incorrectas"}
       ></ErrorModal>
-      <Flex height="100vh" justify="center" alignItems="center" bg="#dcdcdc">
+      <Flex
+        height="100vh"
+        justify="center"
+        alignItems="center"
+        bg={
+          "linear-gradient(180deg, rgba(197,197,197,1) 0%, rgba(255,255,255,1) 100%);"
+        }
+      >
         <Card width="30%">
           <Flex justify="center">
             <CardHeader>
-              <Container>LOGIN APP</Container>
+              <Container>
+                <Text>
+                  Ingresá a la plataforma para comprar o gestionar tus
+                  productos!
+                </Text>
+              </Container>
             </CardHeader>
           </Flex>
           <CardBody>

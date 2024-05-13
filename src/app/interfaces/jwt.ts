@@ -1,5 +1,5 @@
 export interface JtwStructure {
-  exp: string;
+  exp: number;
   sub: string;
   id: number;
   tipo: {

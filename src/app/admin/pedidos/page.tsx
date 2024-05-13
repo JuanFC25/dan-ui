@@ -100,8 +100,8 @@ function ListaPedidos() {
       "ENTREGADO",
       "CANCELADO",
       "EN_DISTRIBUCION",
-      "ENTREGADO",
       "PAGO",
+      "RECHAZADO",
     ];
     const resp = estados.filter((e) => {
       return estadosList.includes(e.estado);

@@ -124,7 +124,7 @@ function Home() {
                       </Td>
                       <Td>
                         {o.fechaRecepcion.toString() ===
-                        "1969-02-02T03:00:00.000Z"
+                        "1969-02-02T00:00:00.000Z"
                           ? ""
                           : o.fechaRecepcion.toString().split("T")[0] +
                             "  " +
@@ -138,7 +138,7 @@ function Home() {
                         {o.esCancelada
                           ? "CANCELADA"
                           : o.fechaRecepcion.toString() ===
-                            "1969-02-02T03:00:00.000Z"
+                            "1969-02-02T00:00:00.000Z"
                           ? "EN PROCESO"
                           : "RECIBIDA"}
                       </Td>

@@ -211,7 +211,7 @@ function DetalleOrden() {
       />
 
       <Flex height="95vh" bg="#f7f7f7" direction="column" align="center">
-        {orden?.fechaRecepcion.toString() !== "1969-02-02T03:00:00.000Z" ||
+        {orden?.fechaRecepcion.toString() !== "1969-02-02T00:00:00.000Z" ||
         orden.esCancelada ? null : (
           <>
             <Card mt="15px" w="70%">
@@ -316,7 +316,7 @@ function DetalleOrden() {
           <Button bg="#19ade5" onClick={() => router.back()}>
             Volver
           </Button>
-          {orden?.fechaRecepcion.toString() !== "1969-01-01T03:00:00.000Z" ||
+          {orden?.fechaRecepcion.toString() !== "1969-02-02T00:00:00.000Z" ||
           orden.esCancelada ? null : (
             <>
               <Button

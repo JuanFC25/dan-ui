@@ -32,12 +32,9 @@ export async function createPedido(detallePedido: ProductoCarrito[]) {
 
 export async function getPedidosCliente() {
   // cambiar cuando lo tenga en el jwt
-  const razonSocial = "Prueba";
+  // const razonSocial = authService.getTokenDecoded()?.clienteRazonSocial;
 
-  const resp = await fetchWrapper(
-    `${Api.API_PEDIDO}/api/pedido?razonSocial=${razonSocial}`,
-    {}
-  );
+  const resp = await fetchWrapper(`${Api.API_PEDIDO}/api/pedido/all`, {});
   return await resp.json();
 }
 

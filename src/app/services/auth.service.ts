@@ -39,6 +39,15 @@ export function getToken() {
   return token;
 }
 
+export function getTokenDecoded() {
+  const token = localStorage.getItem("jwt_token");
+  if (!token) {
+    return;
+  }
+  const resp = jwt.decode(token) as unknown as JtwStructure;
+  return resp;
+}
+
 export function removeToken() {
   localStorage.clear();
 }
@@ -54,7 +63,7 @@ export function getUserClienteId() {
   const token = getToken();
   if (!token) return;
   const decodedToken = jwt.decode(token) as unknown as JtwStructure;
-  return decodedToken.tipo.id;
+  return decodedToken.clienteId;
 }
 
 export function getUserId() {

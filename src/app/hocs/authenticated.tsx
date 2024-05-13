@@ -59,8 +59,14 @@ const checkAuth = (token: string) => {
   if (token) {
     //verificar fecha de expiracion
 
+    const tokenDecoded = jwt.decode(token) as unknown as JtwStructure;
+    const currentTime = Math.floor(Date.now() / 1000); // convertir a segundos
+
+    if (tokenDecoded.exp > currentTime) {
+      return true; // El token está vigente
+    }
+    return false;
     // console.log(token);
-    return true; // Este es un ejemplo simple, debes implementar tu propia lógica aquí
   }
   return false;
 };
