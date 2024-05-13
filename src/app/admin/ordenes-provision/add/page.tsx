@@ -80,6 +80,8 @@ function AgregarOrden() {
         proveedorId,
         detalleOrden
       );
+
+      console.log(resp);
       if (
         (resp.message =
           "Uno o mas productos no pertenecen al proveedor suministrado")
@@ -90,6 +92,7 @@ function AgregarOrden() {
       router.replace("/admin/ordenes-provision");
       closeModalLoading();
     } catch (err: any) {
+      console.log(err);
       console.log("entro al catch");
 
       setIsConfirmConfirmationOpen(false);
